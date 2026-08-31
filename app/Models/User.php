@@ -48,20 +48,4 @@ class User extends Authenticatable
             'role' => UserRole::class,
         ];
     }
-
-    /**
-     * Check whether the user is an admin.
-     */
-    public function isAdmin(): bool
-    {
-        return $this->role === UserRole::Admin;
-    }
-
-    /**
-     * Check whether the user is a customer.
-     */
-    public function isCustomer(): bool
-    {
-        return $this->role === UserRole::Customer;
-    }
 }
