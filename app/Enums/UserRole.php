@@ -14,4 +14,16 @@ enum UserRole: string
             self::Customer => 'Customer',
         };
     }
+
+    /**
+     * Tentukan URL tujuan redirect setelah login berhasil,
+     * berdasarkan role user.
+     */
+    public function redirectAfterLogin(): string
+    {
+        return match ($this) {
+            self::Admin    => route('admin.dashboard'),
+            self::Customer => route('customer.dashboard'),
+        };
+    }
 }

@@ -11,11 +11,13 @@ class EnsureIsCustomer
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (
-            ! $request->user()
-            || $request->user()->role !== UserRole::Customer
-        ) {
-            return redirect()->route('admin.dashboard');
+        if (! $request->user()) {
+            return redirect()->route('login');
+        }
+
+        if ($request->user()->role !== UserRole::Customer) {
+            return redirect($request->user()->role->redirectAfterLogin())
+                ->with('error', 'Halaman ini khusus untuk pelanggan.');
         }
 
         return $next($request);
