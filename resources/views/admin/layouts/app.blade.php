@@ -53,8 +53,8 @@
                     Dashboard
                 </a>
 
-                {{-- Mood --}}
-                <a
+                                {{-- Mood --}}
+                
                     href="{{ route('admin.moods.index') }}"
                     class="block px-4 py-3 rounded-lg
                     {{ request()->routeIs('admin.moods.*')
@@ -63,6 +63,18 @@
                     }}"
                 >
                     Mood Management
+                </a>
+
+                {{-- Produk --}}
+                
+                    href="{{ route('admin.products.index') }}"
+                    class="block px-4 py-3 rounded-lg
+                    {{ request()->routeIs('admin.products.*')
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-700 hover:bg-gray-100'
+                    }}"
+                >
+                    Produk
                 </a>
 
             </nav>
