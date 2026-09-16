@@ -3,77 +3,49 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>
         @yield('title', 'Admin')
         - MoodCrumb
     </title>
 
-    @vite([
-        'resources/css/app.css',
-        'resources/js/app.js'
-    ])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-[#fffaf6] text-[#2d1b14]">
 
     <div class="min-h-screen flex">
 
         {{-- Sidebar --}}
-        <aside class="w-64 min-h-screen bg-white border-r border-gray-200">
+        <aside class="w-64 min-h-screen bg-white border-r border-[#eadfd6]">
 
-            <div class="px-6 py-6 border-b border-gray-200">
-                <a
-                    href="{{ route('admin.dashboard') }}"
-                    class="text-2xl font-bold text-gray-900"
-                >
-                    MoodCrumb
+            {{--
+                Blok logo diberi tinggi tetap (h-20) supaya persis sejajar
+                dengan tinggi header di sebelah kanan. Kalau tingginya beda,
+                garis pembatas horizontal di bawahnya jadi tidak nyambung lurus.
+            --}}
+            <div class="h-20 flex flex-col justify-center px-6 border-b border-[#eadfd6]">
+                <a href="{{ route('admin.dashboard') }}" class="text-2xl font-black tracking-tight">
+                    Mood<span class="text-[#c46b3c]">Crumb</span>
                 </a>
-
-                <p class="text-sm text-gray-500 mt-1">
-                    Admin Panel
-                </p>
+                <p class="text-xs text-[#9b8578] mt-0.5">Admin Panel</p>
             </div>
 
             <nav class="px-4 py-6 space-y-2">
 
                 {{-- Dashboard --}}
-                <a
-                    href="{{ route('admin.dashboard') }}"
-                    class="block px-4 py-3 rounded-lg
-                    {{ request()->routeIs('admin.dashboard')
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
-                    }}"
-                >
+                <a href="{{ route('admin.dashboard') }}" class="block px-4 py-3 rounded-full font-medium transition {{ request()->routeIs('admin.dashboard') ? 'bg-[#2d1b14] text-white' : 'text-[#6b5145] hover:bg-[#f6e6da]' }}">
                     Dashboard
                 </a>
 
-                                {{-- Mood --}}
-                
-                    href="{{ route('admin.moods.index') }}"
-                    class="block px-4 py-3 rounded-lg
-                    {{ request()->routeIs('admin.moods.*')
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
-                    }}"
-                >
+                {{-- Mood --}}
+                <a href="{{ route('admin.moods.index') }}" class="block px-4 py-3 rounded-full font-medium transition {{ request()->routeIs('admin.moods.*') ? 'bg-[#2d1b14] text-white' : 'text-[#6b5145] hover:bg-[#f6e6da]' }}">
                     Mood Management
                 </a>
 
                 {{-- Produk --}}
-                
-                    href="{{ route('admin.products.index') }}"
-                    class="block px-4 py-3 rounded-lg
-                    {{ request()->routeIs('admin.products.*')
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-700 hover:bg-gray-100'
-                    }}"
-                >
+                <a href="{{ route('admin.products.index') }}" class="block px-4 py-3 rounded-full font-medium transition {{ request()->routeIs('admin.products.*') ? 'bg-[#2d1b14] text-white' : 'text-[#6b5145] hover:bg-[#f6e6da]' }}">
                     Produk
                 </a>
 
@@ -85,48 +57,29 @@
         {{-- Main Content --}}
         <main class="flex-1">
 
-            {{-- Header --}}
-            <header
-                class="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between"
-            >
-                <div>
-                    <h1 class="text-xl font-semibold text-gray-900">
-                        @yield('page-title', 'Dashboard')
-                    </h1>
-                </div>
+            {{--
+                Header juga diberi h-20, sama persis dengan blok logo sidebar,
+                supaya garis batas bawah keduanya sejajar lurus.
+            --}}
+            <header class="h-20 flex items-center justify-between bg-white border-b border-[#eadfd6] px-8">
 
+                <h1 class="text-xl font-bold text-[#2d1b14]">
+                    @yield('page-title', 'Dashboard')
+                </h1>
 
                 {{-- User --}}
                 <div class="flex items-center gap-4">
 
                     <div class="text-right">
-
-                        <p class="font-medium text-gray-900">
-                            {{ auth()->user()->name }}
-                        </p>
-
-                        <p class="text-sm text-gray-500">
-                            Admin
-                        </p>
-
+                        <p class="font-semibold text-[#2d1b14]">{{ auth()->user()->name }}</p>
+                        <p class="text-sm text-[#9b8578]">Admin</p>
                     </div>
 
-
-                    <form
-                        method="POST"
-                        action="{{ route('logout') }}"
-                    >
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
-
-                        <button
-                            type="submit"
-                            class="px-4 py-2 text-sm font-medium
-                            text-red-600 border border-red-200
-                            rounded-lg hover:bg-red-50"
-                        >
+                        <button type="submit" class="px-4 py-2 text-sm font-semibold text-red-600 border border-red-200 rounded-full hover:bg-red-50 transition">
                             Logout
                         </button>
-
                     </form>
 
                 </div>
@@ -139,47 +92,21 @@
 
                 {{-- Success Message --}}
                 @if (session('success'))
-
-                    <div
-                        class="mb-6 rounded-lg
-                        border border-green-200
-                        bg-green-50
-                        px-4 py-3
-                        text-green-700"
-                    >
+                    <div class="mb-6 rounded-3xl border border-[#c8e0b0] bg-[#e6efd9] px-5 py-4 text-[#4d6335] font-medium">
                         {{ session('success') }}
                     </div>
-
                 @endif
-
 
                 {{-- Error Message --}}
                 @if ($errors->any())
-
-                    <div
-                        class="mb-6 rounded-lg
-                        border border-red-200
-                        bg-red-50
-                        px-4 py-3
-                        text-red-700"
-                    >
-
-                        <ul class="list-disc list-inside">
-
+                    <div class="mb-6 rounded-3xl border border-red-200 bg-red-50 px-5 py-4 text-red-700">
+                        <ul class="list-disc list-inside space-y-1">
                             @foreach ($errors->all() as $error)
-
-                                <li>
-                                    {{ $error }}
-                                </li>
-
+                                <li>{{ $error }}</li>
                             @endforeach
-
                         </ul>
-
                     </div>
-
                 @endif
-
 
                 @yield('content')
 
