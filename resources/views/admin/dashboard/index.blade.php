@@ -8,32 +8,28 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        {{-- Total Orders --}}
-        <div
-            class="bg-white rounded-xl border border-gray-200 p-6"
-        >
+        {{-- Total Pesanan --}}
+        <div class="bg-white rounded-3xl border border-[#eadfd6] p-6">
 
-            <p class="text-sm text-gray-500">
-                Total Orders
+            <p class="text-sm text-[#7d6559]">
+                Total Pesanan
             </p>
 
-            <h2 class="mt-3 text-3xl font-bold text-gray-900">
+            <h2 class="mt-3 text-3xl font-black text-[#2d1b14]">
                 {{ $stats['total_orders'] ?? 0 }}
             </h2>
 
         </div>
 
 
-        {{-- Today's Orders --}}
-        <div
-            class="bg-white rounded-xl border border-gray-200 p-6"
-        >
+        {{-- Pesanan Hari Ini --}}
+        <div class="bg-white rounded-3xl border border-[#eadfd6] p-6">
 
-            <p class="text-sm text-gray-500">
-                Today's Orders
+            <p class="text-sm text-[#7d6559]">
+                Pesanan Hari Ini
             </p>
 
-            <h2 class="mt-3 text-3xl font-bold text-gray-900">
+            <h2 class="mt-3 text-3xl font-black text-[#2d1b14]">
                 {{ $stats['today_orders'] ?? 0 }}
             </h2>
 
@@ -42,17 +38,15 @@
     </div>
 
 
-    <div
-        class="mt-8 bg-white rounded-xl border border-gray-200 p-6"
-    >
+    <div class="mt-8 bg-white rounded-3xl border border-[#eadfd6] p-6">
 
-        <h2 class="text-lg font-semibold text-gray-900">
-            Welcome to MoodCrumb Admin
+        <h2 class="text-lg font-bold text-[#2d1b14]">
+            Selamat Datang di Admin MoodCrumb
         </h2>
 
-        <p class="mt-2 text-gray-600">
-            Manage moods, products, orders, and other MoodCrumb data
-            from this admin panel.
+        <p class="mt-2 text-[#6b5145]">
+            Kelola mood, produk, pesanan, dan data MoodCrumb lainnya
+            dari panel admin ini.
         </p>
 
     </div>
