@@ -18,14 +18,12 @@
     <div class="min-h-screen flex">
 
         {{--
-            Sidebar: coklat tua (#2d1b14).
-            Tidak ada garis pemisah (border) sama sekali di dalamnya —
-            pembagian antar blok (logo / menu / profil) cuma dari
-            spacing (jarak), bukan garis.
+            Sidebar & navbar: coklat tua (#2d1b14), warna SAMA PERSIS
+            untuk keduanya, sesuai gambar referensi.
         --}}
         <aside class="w-64 min-h-screen bg-[#2d1b14] flex flex-col">
 
-            {{-- Logo — tanpa garis pemisah di bawahnya --}}
+            {{-- Logo --}}
             <div class="flex items-center gap-3 px-6 h-20">
 
                 <div class="w-9 h-9 rounded-xl bg-[#c46b3c] flex items-center justify-center flex-shrink-0">
@@ -53,7 +51,11 @@
                         Utama
                     </p>
 
-                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-semibold transition {{ request()->routeIs('admin.dashboard') ? 'bg-[#a9542d] text-white' : 'text-[#d8c2b4] hover:bg-[#3b261d] hover:text-white' }}">
+                    {{--
+                        Menu aktif: pil PENUH BULAT (rounded-full), background
+                        terracotta solid #c46b3c — sesuai gambar referensi ke-2.
+                    --}}
+                    <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-full font-semibold transition {{ request()->routeIs('admin.dashboard') ? 'bg-[#c46b3c] text-white' : 'text-[#d8c2b4] hover:bg-[#3b261d] hover:text-white' }}">
 
                         <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="3" width="7" height="7" rx="1.5"/>
@@ -78,7 +80,7 @@
 
                     <div class="space-y-1">
 
-                        <a href="{{ route('admin.products.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-semibold transition {{ request()->routeIs('admin.products.*') ? 'bg-[#a9542d] text-white' : 'text-[#d8c2b4] hover:bg-[#3b261d] hover:text-white' }}">
+                        <a href="{{ route('admin.products.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-full font-semibold transition {{ request()->routeIs('admin.products.*') ? 'bg-[#c46b3c] text-white' : 'text-[#d8c2b4] hover:bg-[#3b261d] hover:text-white' }}">
 
                             <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"/>
@@ -88,7 +90,7 @@
 
                         </a>
 
-                        <a href="{{ route('admin.moods.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-2xl font-semibold transition {{ request()->routeIs('admin.moods.*') ? 'bg-[#a9542d] text-white' : 'text-[#d8c2b4] hover:bg-[#3b261d] hover:text-white' }}">
+                        <a href="{{ route('admin.moods.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-full font-semibold transition {{ request()->routeIs('admin.moods.*') ? 'bg-[#c46b3c] text-white' : 'text-[#d8c2b4] hover:bg-[#3b261d] hover:text-white' }}">
 
                             <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <circle cx="12" cy="12" r="9"/>
@@ -108,7 +110,7 @@
             </nav>
 
 
-            {{-- Profil + Logout — tanpa garis pemisah di atasnya --}}
+            {{-- Profil + Logout --}}
             <div class="p-4">
 
                 <div class="flex items-center gap-3 bg-[#3b261d] rounded-2xl p-3">
@@ -143,10 +145,6 @@
         {{-- Main Content --}}
         <main class="flex-1">
 
-            {{--
-                Header: warna PERSIS SAMA dengan sidebar (#2d1b14),
-                dan tanpa garis pemisah di bawahnya.
-            --}}
             <header class="h-20 flex items-center bg-[#2d1b14] px-8">
                 <h1 class="text-xl font-bold text-white">
                     @yield('page-title', 'Dashboard')

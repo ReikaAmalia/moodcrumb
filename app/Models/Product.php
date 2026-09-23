@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Product Model
@@ -46,6 +47,15 @@ class Product extends Model
     public function mood(): BelongsTo
     {
         return $this->belongsTo(Mood::class);
+    }
+
+    /**
+     * Satu produk punya banyak riwayat perubahan stok.
+     * Dipakai untuk: $product->stockLogs
+     */
+    public function stockLogs(): HasMany
+    {
+        return $this->hasMany(StockLog::class);
     }
 
     /**

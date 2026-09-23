@@ -27,8 +27,9 @@
 
             <table class="min-w-full divide-y divide-[#eadfd6]">
 
+                {{-- Kolom dipisahkan garis vertikal (divide-x), sama seperti tabel Mood --}}
                 <thead class="bg-[#f6e6da]">
-                    <tr>
+                    <tr class="divide-x divide-[#eadfd6]">
                         <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-[#9b4d2c]">Gambar</th>
                         <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-[#9b4d2c]">Nama Produk</th>
                         <th class="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-[#9b4d2c]">Mood</th>
@@ -43,7 +44,7 @@
 
                     @forelse ($products as $product)
 
-                        <tr class="transition hover:bg-[#fffaf6]">
+                        <tr class="divide-x divide-[#eadfd6] transition hover:bg-[#fffaf6]">
 
                             <td class="whitespace-nowrap px-6 py-4">
                                 @if ($product->image)
@@ -93,11 +94,6 @@
 
                     @empty
 
-                        {{--
-                            Empty state — padding atas/bawah dibuat lega (py-20)
-                            dan tombol diberi jarak lebih (mb-2 pada wrapper)
-                            supaya tidak menempel dengan garis bawah tabel.
-                        --}}
                         <tr>
                             <td colspan="7" class="px-6 pt-16 pb-20 text-center">
 
